@@ -112,6 +112,7 @@ export interface LohnsteuerOCRResult {
   tax_class?: string;
   confidence: number;
   raw_text: string;
+  error?: string;
 }
 
 // Steuerberater advisor in the marketplace
