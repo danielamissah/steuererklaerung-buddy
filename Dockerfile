@@ -10,13 +10,18 @@
 # Next.js inlines them into the client bundle during compilation.
 
 # ── Stage 1: Dependencies ─────────────────────────────────────────────────────
+# ── Stage 1: Dependencies ─────────────────────────────────────────────────────
 FROM node:20-alpine AS deps
 
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 COPY package.json package-lock.json ./
-RUN npm ci --only=production
+# Install ALL dependencies including devDependencies —
+# build tools like @tailwindcss/postcss are needed at compile time.
+# The runner stage copies only the compiled output, not node_modules,
+# so dev packages do not end up in the production image.
+RUN npm ci
 
 # ── Stage 2: Builder ──────────────────────────────────────────────────────────
 FROM node:20-alpine AS builder
