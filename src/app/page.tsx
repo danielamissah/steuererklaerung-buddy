@@ -24,12 +24,12 @@ function FooterLink({ href, label }: { href: string; label: string }) {
   );
 }
 
-const inputStyle: React.CSSProperties = {
-  width: '100%', padding: '10px 12px', borderRadius: '10px',
-  border: '1.5px solid #E5E7EB', fontSize: '14px',
-  color: '#1A1A1A', background: 'white',
-  fontFamily: 'var(--font-inter)',
-};
+// const inputStyle: React.CSSProperties = {
+//   width: '100%', padding: '10px 12px', borderRadius: '10px',
+//   border: '1.5px solid #E5E7EB', fontSize: '14px',
+//   color: '#1A1A1A', background: 'white',
+//   fontFamily: 'var(--font-inter)',
+// };
 
 
 
