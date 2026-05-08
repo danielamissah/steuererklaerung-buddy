@@ -2,10 +2,11 @@
 
 import { TaxResult } from '@/types';
 import { formatEur } from '@/lib/taxEngine';
+// import {T} from '@data/translations';
 
 interface Props {
   result: TaxResult | null;
-  t: any;
+    t: { refundLabel: string; additionalLabel: string; disclaimer: string };
 }
 
 // Live refund meter — updates in real time as the user fills in the form.

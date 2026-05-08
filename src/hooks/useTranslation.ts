@@ -11,8 +11,11 @@ export function useTranslation() {
 
   useEffect(() => {
     const stored = localStorage.getItem('steuer_lang') as Language | null;
-    if (stored === 'en' || stored === 'de') setLang(stored);
-  }, []);
+    if (stored && (stored === 'en' || stored === 'de')) {
+      setLang(stored);
+    }
+  }, []); // Empty dependency array prevents infinite loops
+
 
   function toggleLang() {
     const next: Language = lang === 'en' ? 'de' : 'en';

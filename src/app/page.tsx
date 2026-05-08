@@ -12,8 +12,8 @@ import { LohnsteuerUpload } from '@/components/LohnsteuerUpload';
 import { TaxChat } from '@/components/TaxChat';
 import { FormField } from '@/components/FormField';
 import { BUNDESLAENDER, TAX_CLASSES } from '@/data/taxConstants';
-import { LohnsteuerOCRResult, TaxFiling } from '@/types';
-import { formatEur } from '@/lib/taxEngine';
+import { LohnsteuerOCRResult } from '@/types';
+// import { formatEur } from '@/lib/taxEngine';
 
 function FooterLink({ href, label }: { href: string; label: string }) {
   return (
@@ -158,7 +158,7 @@ export default function Home() {
               <FormField label={t.employmentType} required>
                 <select
                   value={filing.employment_type}
-                  onChange={(e) => updateField('employment_type', e.target.value as any)}
+                  onChange={(e) => updateField('employment_type', e.target.value as 'employee' | 'freelancer' | 'both' | 'unemployed')}
                   className="w-full px-3 py-2.5 rounded-xl border-1.5 border-border text-sm text-text bg-white cursor-pointer appearance-none bg-[url('data:image/svg+xml,%3Csvg_xmlns=%22http://www.w3.org/2000/svg%22_width=%2212%22_height=%2212%22_viewBox=%220_0_12_12%22%3E%3Cpath_fill=%22%236B7280%22_d=%22M6_8L1_3h10z%22/%3E%3C/svg%3E')] bg-no-repeat bg-[position:right_12px_center] pr-8"
                 >
                   <option value="employee">{t.employee}</option>
@@ -172,7 +172,7 @@ export default function Home() {
                 <FormField label={t.maritalStatus} required>
                   <select
                     value={filing.marital_status}
-                    onChange={(e) => updateField('marital_status', e.target.value as any)}
+                    onChange={(e) => updateField('marital_status', e.target.value as 'single' | 'married' | 'divorced' | 'widowed')}
                     className="w-full px-3 py-2.5 rounded-xl border-1.5 border-border text-sm text-text bg-white cursor-pointer appearance-none bg-[url('data:image/svg+xml,%3Csvg_xmlns=%22http://www.w3.org/2000/svg%22_width=%2212%22_height=%2212%22_viewBox=%220_0_12_12%22%3E%3Cpath_fill=%22%236B7280%22_d=%22M6_8L1_3h10z%22/%3E%3C/svg%3E')] bg-no-repeat bg-[position:right_12px_center] pr-8"
                   >
                     <option value="single">{t.single}</option>
@@ -185,7 +185,7 @@ export default function Home() {
                 <FormField label={t.taxClass} hint={t.taxClassHint} required>
                   <select
                     value={filing.tax_class}
-                    onChange={(e) => updateField('tax_class', e.target.value as any)}
+                    onChange={(e) => updateField('tax_class', e.target.value as string)}
                     className="w-full px-3 py-2.5 rounded-xl border-1.5 border-border text-sm text-text bg-white cursor-pointer appearance-none bg-[url('data:image/svg+xml,%3Csvg_xmlns=%22http://www.w3.org/2000/svg%22_width=%2212%22_height=%2212%22_viewBox=%220_0_12_12%22%3E%3Cpath_fill=%22%236B7280%22_d=%22M6_8L1_3h10z%22/%3E%3C/svg%3E')] bg-no-repeat bg-[position:right_12px_center] pr-8"
                   >
                     {TAX_CLASSES.map((tc) => (

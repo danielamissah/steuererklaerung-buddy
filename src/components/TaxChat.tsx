@@ -77,7 +77,7 @@ export function TaxChat({ filing, result, t }: Props) {
         {messages.length === 0 && (
           <div className="text-center py-5">
             <p className="text-[13px] text-[#9CA3AF]">
-              Ask "Why is my refund this amount?" or "What can I do to get a bigger refund next year?"
+                            Ask &quot;Why is my refund this amount?&quot; or &quot;What can I do to get a bigger refund next year?&quot;
             </p>
           </div>
         )}
