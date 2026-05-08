@@ -3,7 +3,6 @@ import Groq from 'groq-sdk';
 import { TaxResult, TaxFiling } from '@/types';
 import { formatEur } from '@/lib/taxEngine';
 
-const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 // System prompt grounded in German tax law.
 // The model acts as a tax assistant explaining the user's specific result —
@@ -42,6 +41,9 @@ export async function POST(req: NextRequest) {
         { status: 500 }
       );
     }
+
+    const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+
 
     const response = await groq.chat.completions.create({
       model: 'llama-3.3-70b-versatile',

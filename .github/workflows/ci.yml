@@ -101,14 +101,10 @@ jobs:
           docker run -d \
             --name steuer-test \
             -p 3000:3000 \
-            -e GROQ_API_KEY=dummykey \
-            -e GOOGLE_CLOUD_VISION_API_KEY=dummykey \
+            -e GROQ_API_KEY=placeholder \
+            -e GOOGLE_CLOUD_VISION_API_KEY=placeholder \
             steuererklaerung-buddy:ci
 
-          # Wait for Next.js to finish starting
           sleep 12
-
-          # Hit the health check — fail the job if it does not return 200
           curl --fail --silent http://localhost:3000/api/health || exit 1
-
           docker stop steuer-test
