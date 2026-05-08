@@ -338,38 +338,6 @@ The `calculateTax()` function runs in the browser for instant feedback as the us
 
 ---
 
-## ELSTER XML Export
-
-The export generates a structured XML file in the ELSTER ESt 1A schema format. All monetary values are encoded in Euro-Cents (integer, no decimal) as required by the ELSTER standard.
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<Elster xmlns="http://www.elster.de/elsterxml/schema/v12">
-  <TransferHeader>
-    <DatenArt>ESt</DatenArt>
-    ...
-  </TransferHeader>
-  <DatenTeil>
-    <Nutzdaten>
-      <Anmeldungssteuern art="ESt" version="202501">
-        <Steuerfall>
-          <ESt>
-            <Bruttoarbeitslohn>4500000</Bruttoarbeitslohn>  <!-- €45,000 in cents -->
-            <WerbungskostenGesamt>252000</WerbungskostenGesamt>
-            <VoraussichtlicheErstattung>57700</VoraussichtlicheErstattung>
-            ...
-          </ESt>
-        </Steuerfall>
-      </Anmeldungssteuern>
-    </Nutzdaten>
-  </DatenTeil>
-</Elster>
-```
-
-**Note:** Full ELSTER submission requires the ERiC library for cryptographic signing and Finanzamt registration. This export is for reference and manual submission via ELSTER online at www.elster.de.
-
----
-
 ## Updating for a New Tax Year
 
 All rates live in `src/data/taxConstants.ts`. Each January:
@@ -391,13 +359,6 @@ All rates live in `src/data/taxConstants.ts`. Each January:
 
 Vercel auto-deploys on every merge to `main`. Region: `fra1` (Frankfurt) for EU data residency. Financial data never leaves the EU.
 
-Security headers applied on all routes:
-
-* `X-Content-Type-Options: nosniff`
-* `X-Frame-Options: DENY`
-* `X-XSS-Protection: 1; mode=block`
-* `Referrer-Policy: strict-origin-when-cross-origin`
-
 ---
 
 ## Roadmap
@@ -414,7 +375,7 @@ Security headers applied on all routes:
 
 ## Disclaimer
 
-All calculations are based on official 2025 rates from the Bundesministerium der Finanzen, §32a EStG, and related tax legislation. This tool provides estimates for informational purposes only and does not constitute tax advice. Actual tax liability is determined by the Finanzamt. For complex situations (multiple employers, foreign income, significant investments, business assets), consult a qualified Steuerberater. You can find one at [www.bstbk.de](https://www.bstbk.de/de/steuerberatersuche).
+All calculations are based on official 2025 rates from the Bundesministerium der Finanzen, §32a EStG, and related tax legislation. This tool provides estimates for informational purposes only and does not constitute tax advice. Actual tax liability is determined by the Finanzamt. For complex situations (multiple employers, foreign income, significant investments, business assets), consult a qualified Steuerberater.
 
 ---
 
