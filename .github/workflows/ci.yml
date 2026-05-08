@@ -35,7 +35,7 @@ jobs:
 
       # Next.js lint — zero warnings policy
       - name: Lint
-        run: npx next lint --max-warnings 0
+        run: npx eslint . --max-warnings 0
 
   build:
     name: Production Build
