@@ -1,0 +1,45 @@
+# Lighthouse CI — runs on every pull request.
+# SEO score is critical for this app: "Steuererklärung 2025" gets
+# millions of German searches per year. A dropped SEO score means
+# lost organic traffic to people who need this tool.
+
+name: Lighthouse CI
+
+on:
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  lighthouse:
+    name: Lighthouse Audit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+        env:
+          GOOGLE_CLOUD_VISION_API_KEY: dummykey
+          GROQ_API_KEY: dummykey
+          NEXT_PUBLIC_SUPABASE_URL: dummyurl
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: dummykey
+          NEXT_PUBLIC_APP_URL: dummyurl
+
+      - name: Install Lighthouse CI
+        run: npm install -g @lhci/cli@0.13.x
+
+      - name: Run Lighthouse CI
+        run: lhci autorun
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.GITHUB_TOKEN }}
