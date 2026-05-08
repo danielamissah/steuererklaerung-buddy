@@ -1,21 +1,19 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { t, Language, T } from '@/data/translations';
 
-// Reads language preference from localStorage on mount.
-// Defaults to English — primary audience is expats filing
-// their first German tax return in an unfamiliar language.
+// Initialise language directly from localStorage to avoid setState-in-effect.
+// getItem returns null in SSR (no localStorage) so we default to 'en' safely.
+function getInitialLang(): Language {
+  if (typeof window === 'undefined') return 'en';
+  const stored = localStorage.getItem('steuer_lang');
+  if (stored === 'en' || stored === 'de') return stored;
+  return 'en';
+}
+
 export function useTranslation() {
-  const [lang, setLang] = useState<Language>('en');
-
-  useEffect(() => {
-    const stored = localStorage.getItem('steuer_lang') as Language | null;
-    if (stored && (stored === 'en' || stored === 'de')) {
-      setLang(stored);
-    }
-  }, []); // Empty dependency array prevents infinite loops
-
+  const [lang, setLang] = useState<Language>(getInitialLang);
 
   function toggleLang() {
     const next: Language = lang === 'en' ? 'de' : 'en';

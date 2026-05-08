@@ -126,9 +126,9 @@ export function calculateTax(filing: TaxFiling): TaxResult {
   // 2. Deductions
   const werbungskosten = calculateWerbungskosten(filing);
   const sonderausgaben = calculateSonderausgaben(filing);
-  const freelanceProfit = Math.max(
-    (filing.freelance_income_eur || 0) - (filing.freelance_expenses_eur || 0), 0
-  );
+  // const freelanceProfit = Math.max(
+  //   (filing.freelance_income_eur || 0) - (filing.freelance_expenses_eur || 0), 0
+  // );
 
   // 3. Taxable income (zu versteuerndes Einkommen)
   // For employees: gross - werbungskosten - sonderausgaben

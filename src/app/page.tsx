@@ -31,15 +31,7 @@ const inputStyle: React.CSSProperties = {
   fontFamily: 'var(--font-inter)',
 };
 
-const selectStyle: React.CSSProperties = {
-  ...inputStyle,
-  appearance: 'none' as const,
-  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236B7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E")`,
-  backgroundRepeat: 'no-repeat',
-  backgroundPosition: 'right 12px center',
-  paddingRight: '32px',
-  cursor: 'pointer',
-};
+
 
 export default function Home() {
   const { t, lang, toggleLang } = useTranslation();
@@ -92,7 +84,7 @@ export default function Home() {
               {t.updatedFor}
             </span>
           </div>
-          <LanguageToggle lang={lang} onToggle={toggleLang} label={t.langToggle} />
+          <LanguageToggle lang={lang} onToggle={toggleLang} />
         </div>
       </nav>
 

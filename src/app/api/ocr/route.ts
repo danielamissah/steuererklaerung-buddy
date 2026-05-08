@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
     // Convert file to base64 for Google Cloud Vision API
     const arrayBuffer = await file.arrayBuffer();
     const base64 = Buffer.from(arrayBuffer).toString('base64');
-    const mimeType = file.type || 'image/jpeg';
+    // const mimeType = file.type || 'image/jpeg';
 
     // Call Google Cloud Vision TEXT_DETECTION
     const visionResponse = await fetch(
