@@ -11,16 +11,16 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@stripe/stripe-js": "^9.3.1",
-    "@supabase/ssr": "^0.10.2",
+    "@stripe/stripe-js": "^9.4.0",
+    "@supabase/ssr": "^0.10.3",
     "@supabase/supabase-js": "^2.104.1",
-    "groq-sdk": "^1.1.2",
-    "next": "16.2.4",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
+    "groq-sdk": "^1.2.0",
+    "next": "16.2.6",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
     "react-dropzone": "^15.0.0",
-    "stripe": "^22.1.0",
-    "zustand": "^5.0.12"
+    "stripe": "^22.1.1",
+    "zustand": "^5.0.13"
   },
   "devDependencies": {
     "@playwright/test": "^1.59.1",
@@ -33,9 +33,9 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.2.4",
-    "jest": "^30.3.0",
-    "jest-environment-jsdom": "^30.3.0",
+    "eslint-config-next": "16.2.6",
+    "jest": "^30.4.2",
+    "jest-environment-jsdom": "^30.4.1",
     "tailwindcss": "^4",
     "ts-node": "^10.9.2",
     "typescript": "^5"
